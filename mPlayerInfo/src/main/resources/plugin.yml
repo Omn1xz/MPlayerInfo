@@ -1,0 +1,27 @@
+name: mPlayerInfo
+version: '${version}'
+author: mplugins
+description: Меню информации об игроке — голова, инвентарь, эндер-сундук, состояние, ваниш+ТП, заморозка.
+website: https://github.com/mplugins/mplayerinfo
+main: mplugins.MPlayerInfo
+# api-version 1.21 = совместимость 1.21+ (включая новые версии, только Bukkit-API без NMS)
+api-version: '1.21'
+load: POSTWORLD
+prefix: mPlayerInfo
+commands:
+  mplayerinfo:
+    description: Информация об игроке
+    usage: /mplayerinfo <nick>
+    aliases: [playerinfo, pinfo, mi]
+    permission: mplayerinfo.use
+    permission-message: §cУ вас нет прав (mplayerinfo.use).
+  invsee:
+    description: Просмотр инвентаря игрока (вещи + броня)
+    usage: /invsee <nick>
+    aliases: [inv, openinv]
+    permission: mplayerinfo.use
+    permission-message: §cУ вас нет прав (mplayerinfo.use).
+permissions:
+  mplayerinfo.use:
+    description: Право на использование команд mPlayerInfo
+    default: op

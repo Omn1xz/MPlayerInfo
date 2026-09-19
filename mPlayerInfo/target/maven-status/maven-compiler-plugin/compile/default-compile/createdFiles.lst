@@ -1,0 +1,14 @@
+mplugins\managers\SessionManager.class
+mplugins\commands\InfoCommand.class
+mplugins\menu\InvseeMenu.class
+mplugins\config\ConfigManager$MenuItem.class
+mplugins\listeners\PlayerListener.class
+mplugins\MPlayerInfo.class
+mplugins\managers\FreezeManager.class
+mplugins\util\Text.class
+mplugins\menu\InfoMenu$Holder.class
+mplugins\managers\VanishManager.class
+mplugins\menu\InvseeMenu$Holder.class
+mplugins\commands\InvseeCommand.class
+mplugins\config\ConfigManager.class
+mplugins\menu\InfoMenu.class

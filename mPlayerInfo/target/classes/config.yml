@@ -1,0 +1,153 @@
+# mPlayerInfo — меню информации об игроке.
+# Настройки меню ниже: title, size, filler и предметы.
+# У каждого предмета можно менять slot, material,
+# display-name, lore и action.
+
+messages:
+  prefix: "&8[&dmPlayerInfo&8] "
+  no-permission: "&cУ вас нет прав (mplayerinfo.use)."
+  player-only: "&cКоманда только для игроков."
+  player-not-found: "&cИгрок &e{target} &cне найден или никогда не заходил."
+  offline-action: "&cИгрок оффлайн, действие недоступно."
+  cannot-self: "&cНельзя использовать это на себе."
+  usage: "&eИспользование: &f/mplayerinfo <nick> &8| &f/mplayerinfo reload"
+  invsee-usage: "&eИспользование: &f/invsee <nick>"
+  reloaded: "&aКонфигурация перезагружена!"
+  vanished: "&7Вы теперь &fв ванише&7."
+  vanish-tp: "&7Телепортация к &e{target}&7 в ванише."
+  target-frozen: "&bИгрок &e{target} &bзаморожен."
+  target-unfrozen: "&aИгрок &e{target} &aразморожен."
+  you-frozen: "&cВы были заморожены администрацией. Не двигайтесь!"
+  you-unfrozen: "&aВы были разморожены."
+  freeze-blocked: "&cВы заморожены и не можете двигаться!"
+  word-online: "&aОнлайн"
+  word-offline: "&cОффлайн"
+  word-yes: "&cДа"
+  word-no: "&aНет"
+  word-none: "&7—"
+  word-no-effects: "&7Нет"
+
+menu:
+  # Заголовок меню. Плейсхолдер {target} — ник цели.
+  title: "&8Информация о &c{target}"
+  # Размер строго 9/18/27/36/45/54
+  size: 54
+
+  filler:
+    enabled: true
+    # BORDER — только рамка (как на скриншоте), EMPTY — все пустые слоты, NONE — выкл
+    mode: "BORDER"
+    material: PINK_STAINED_GLASS_PANE
+    display-name: " "
+
+  items:
+    # ---- Голова: основная информация (цветной лор — так и задумано) ----
+    head:
+      enabled: true
+      slot: 22
+      material: PLAYER_HEAD
+      # skull-owner: TARGET — подставить скин цели, NONE — обычная голова
+      skull-owner: TARGET
+      display-name: "&eГолова: &f{target}"
+      lore:
+        - "&7Ник: &f{target}"
+        - "&7Онлайн: {online}"
+        - "&7Мир: &f{world}"
+        - "&7Координаты: &f{x} {y} {z}"
+        - "&7Пинг: &f{ping}"
+        - "&7Сессия: &f{session}"
+        - "&7UUID: &8{uuid}"
+        - ""
+        - "&8Информация обновляется при открытии"
+      glow: false
+      # INFO — просто показывает лор, ничего не делает
+      action: INFO
+
+    # ---- Сундук: открыть инвентарь (выполняет логику /invsee) ----
+    inventory:
+      enabled: true
+      slot: 29
+      material: CHEST
+      display-name: "&eИнвентарь игрока"
+      lore:
+        - "&7Нажмите, чтобы открыть"
+        - "&7инвентарь {target}"
+      glow: false
+      action: INVSEE
+      close-on-click: false
+
+    # ---- Эндер-сундук ----
+    enderchest:
+      enabled: true
+      slot: 30
+      material: ENDER_CHEST
+      display-name: "&dЭндер-сундук"
+      lore:
+        - "&7Нажмите, чтобы открыть"
+        - "&7эндер-сундук {target}"
+      glow: false
+      action: ENDERSEE
+      close-on-click: false
+
+    # ---- Яблоко: состояние (цветной лор — так и задумано) ----
+    state:
+      enabled: true
+      slot: 31
+      material: APPLE
+      display-name: "&cСостояние: &f{target}"
+      lore:
+        - "&7Здоровье: &c{health}"
+        - "&7Голод: &6{food}"
+        - "&7Режим: &f{gamemode}"
+        - "&7Уровень: &f{level}"
+        - "&7Эффекты: &f{effects}"
+        - "&7Заморожен: {frozen}"
+      glow: true
+      action: STATE
+
+    # Зелье слежки
+    vanish:
+      enabled: true
+      slot: 32
+      material: POTION
+      display-name: "&fСледить"
+      lore:
+        - "&7Нажмите чтобы начать слежку за игроком."
+      glow: false
+      action: VANISH
+      close-on-click: false
+
+    # ---- Лёд: заморозка ----
+    freeze:
+      enabled: true
+      slot: 33
+      material: ICE
+      display-name: "&bЗаморозка"
+      lore:
+        - "&7Нажмите, чтобы"
+        - "&7заморозить / разморозить {target}"
+        - ""
+        - "&7Статус: {frozen}"
+      glow: false
+      action: FREEZE
+      close-on-click: false
+
+    # Пример своего предмета в стиле DeluxeMenus (действие — команды):
+    # rules:
+    #   enabled: false
+    #   slot: 40
+    #   material: BOOK
+    #   display-name: "&eНаказать"
+    #   lore:
+    #     - "&7Выполнить команды по клику"
+    #   action: COMMAND
+    #   click-commands:
+    #     - "[player] invsee {target}"
+    #     - "[console] say {viewer} смотрит {target}"
+    #   close-on-click: true
+
+# Заголовки дополнительных меню
+invsee:
+  title: "&8Инвентарь: &c{target}"
+enderchest:
+  title: "&8Эндер-сундук: &c{target}"
